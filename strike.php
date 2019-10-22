@@ -25,26 +25,7 @@ class Strike
             $this->reset_element('strikes');
             $this->reset_element('fires');
 
-            $this->cpu_number_selectted_to_play = $this->calculate_random_number();
-
-            $cpu_number_selectted_to_play_splitted = str_split($this->cpu_number_selectted_to_play);
-            $number_selected_by_player_splitted = str_split($this->number_selected_by_player);
-
-            foreach ($number_selected_by_player_splitted as $digit_number_key => $digit_number)
-            {
-                if (in_array($digit_number, $cpu_number_selectted_to_play_splitted)) 
-                {
-                    $select_number_key = array_search($digit_number, $cpu_number_selectted_to_play_splitted);
-                    if ($digit_number_key == $select_number_key) 
-                    {
-                        $this->strikes = $this->strikes + 1;
-                    }
-                    else 
-                    {
-                        $this->fires = $this->fires + 1;
-                    }
-                }
-            }
+            $this->cpu_try_with_new_number();
 
             echo 'TRY: ' . $this->number_of_play . '<br>';
             echo 'number_selected_by_player: ' . $this->number_selected_by_player . '<br>';
@@ -81,5 +62,29 @@ class Strike
     private function reset_element($element)
     {
         $this->$element = 0;
+    }
+
+    private function cpu_try_with_new_number()
+    {
+        $this->cpu_number_selectted_to_play = $this->calculate_random_number();
+
+        $cpu_number_selectted_to_play_splitted = str_split($this->cpu_number_selectted_to_play);
+        $number_selected_by_player_splitted = str_split($this->number_selected_by_player);
+
+        foreach ($number_selected_by_player_splitted as $digit_number_key => $digit_number)
+        {
+            if (in_array($digit_number, $cpu_number_selectted_to_play_splitted)) 
+            {
+                $select_number_key = array_search($digit_number, $cpu_number_selectted_to_play_splitted);
+                if ($digit_number_key == $select_number_key) 
+                {
+                    $this->strikes = $this->strikes + 1;
+                }
+                else 
+                {
+                    $this->fires = $this->fires + 1;
+                }
+            }
+        }
     }
 }
