@@ -24,14 +24,8 @@ class Strike
         {
             $this->reset_element('strikes');
             $this->reset_element('fires');
-
             $this->cpu_try_with_new_number();
-
-            echo 'TRY: ' . $this->number_of_play . '<br>';
-            echo 'number_selected_by_player: ' . $this->number_selected_by_player . '<br>';
-            echo 'cpu_number_selectted_to_play: ' . $this->cpu_number_selectted_to_play . '<br>';
-            echo 'strikes: ' . $this->strikes . ' y fires: ' . $this->fires;
-            echo '<br><br>';
+            $this->print_try_of_cpu();
             $this->number_of_play++;
         } while ($this->strikes != self::NUMBER_OF_DIGITS);
     }
@@ -86,5 +80,14 @@ class Strike
                 }
             }
         }
+    }
+
+    private function print_try_of_cpu()
+    {
+        echo 'TRY: ' . $this->number_of_play . '<br>';
+        echo 'number_selected_by_player: ' . $this->number_selected_by_player . '<br>';
+        echo 'cpu_number_selectted_to_play: ' . $this->cpu_number_selectted_to_play . '<br>';
+        echo 'strikes: ' . $this->strikes . ' y fires: ' . $this->fires;
+        echo '<br><br>';
     }
 }
