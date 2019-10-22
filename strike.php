@@ -4,6 +4,7 @@ class Strike
 {
     const NUMBER_OF_DIGITS = 4;
     private $number_selected_by_player;
+    private $cpu_number_selectted_to_play;
     private $number_of_play;
     private $strikes;
     private $fires;
@@ -24,16 +25,16 @@ class Strike
             $this->reset_element('strikes');
             $this->reset_element('fires');
 
-            $select_number_random_to_play = $this->calculate_random_number();
+            $this->cpu_number_selectted_to_play = $this->calculate_random_number();
 
-            $select_number_random_to_play_splitted = str_split($select_number_random_to_play);
+            $cpu_number_selectted_to_play_splitted = str_split($this->cpu_number_selectted_to_play);
             $number_selected_by_player_splitted = str_split($this->number_selected_by_player);
 
             foreach ($number_selected_by_player_splitted as $digit_number_key => $digit_number)
             {
-                if (in_array($digit_number, $select_number_random_to_play_splitted)) 
+                if (in_array($digit_number, $cpu_number_selectted_to_play_splitted)) 
                 {
-                    $select_number_key = array_search($digit_number, $select_number_random_to_play_splitted);
+                    $select_number_key = array_search($digit_number, $cpu_number_selectted_to_play_splitted);
                     if ($digit_number_key == $select_number_key) 
                     {
                         $this->strikes = $this->strikes + 1;
@@ -47,7 +48,7 @@ class Strike
 
             echo 'TRY: ' . $this->number_of_play . '<br>';
             echo 'number_selected_by_player: ' . $this->number_selected_by_player . '<br>';
-            echo 'select_number: ' . $select_number_random_to_play . '<br>';
+            echo 'cpu_number_selectted_to_play: ' . $this->cpu_number_selectted_to_play . '<br>';
             echo 'strikes: ' . $this->strikes . ' y fires: ' . $this->fires;
             echo '<br><br>';
             $this->number_of_play++;
