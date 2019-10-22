@@ -3,6 +3,7 @@
 class Strike
 {
     const NUMBER_OF_DIGITS = 4;
+    private $number_of_play;
     private $strikes;
     private $fires;
 
@@ -10,13 +11,13 @@ class Strike
     {
         $this->strikes = 0;
         $this->fires = 0;
+        $this->number_of_play = 1;
     }
 
     public function run()
     {
         $number_player = $this->calculate_random_number();
-        $cont = 1;
-
+        
         do 
         {
             $this->reset_element('strikes');
@@ -43,12 +44,12 @@ class Strike
                 }
             }
 
-            echo 'TRY: ' . $cont . '<br>';
+            echo 'TRY: ' . $this->number_of_play . '<br>';
             echo 'number_player: ' . $number_player . '<br>';
             echo 'select_number: ' . $select_number_random_to_play . '<br>';
             echo 'strikes: ' . $this->strikes . ' y fires: ' . $this->fires;
             echo '<br><br>';
-            $cont++;
+            $this->number_of_play++;
         } while ($this->strikes != self::NUMBER_OF_DIGITS);
     }
 
