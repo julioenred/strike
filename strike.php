@@ -49,7 +49,7 @@ class Strike
             echo 'strikes: ' . $this->strikes . ' y fires: ' . $this->fires;
             echo '<br><br>';
             $cont++;
-        } while ($this->strikes != 4);
+        } while ($this->strikes != self::NUMBER_OF_DIGITS);
     }
 
     private function calculate_random_number()
