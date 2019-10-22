@@ -3,6 +3,7 @@
 class Strike
 {
     const NUMBER_OF_DIGITS = 4;
+    private $number_selected_by_player;
     private $number_of_play;
     private $strikes;
     private $fires;
@@ -16,7 +17,7 @@ class Strike
 
     public function run()
     {
-        $number_player = $this->calculate_random_number();
+        $this->number_selected_by_player = $this->calculate_random_number();
         
         do 
         {
@@ -26,9 +27,9 @@ class Strike
             $select_number_random_to_play = $this->calculate_random_number();
 
             $select_number_random_to_play_splitted = str_split($select_number_random_to_play);
-            $number_player_splitted = str_split($number_player);
+            $number_selected_by_player_splitted = str_split($this->number_selected_by_player);
 
-            foreach ($number_player_splitted as $digit_number_key => $digit_number)
+            foreach ($number_selected_by_player_splitted as $digit_number_key => $digit_number)
             {
                 if (in_array($digit_number, $select_number_random_to_play_splitted)) 
                 {
@@ -45,7 +46,7 @@ class Strike
             }
 
             echo 'TRY: ' . $this->number_of_play . '<br>';
-            echo 'number_player: ' . $number_player . '<br>';
+            echo 'number_selected_by_player: ' . $this->number_selected_by_player . '<br>';
             echo 'select_number: ' . $select_number_random_to_play . '<br>';
             echo 'strikes: ' . $this->strikes . ' y fires: ' . $this->fires;
             echo '<br><br>';
