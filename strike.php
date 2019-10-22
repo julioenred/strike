@@ -4,7 +4,7 @@ class Strike
 {
     const NUMBER_OF_DIGITS = 4;
 
-    public function run()
+    private function calculate_random_number()
     {
         $digits_of_number = [];
 
@@ -24,7 +24,12 @@ class Strike
             $number = $number . $digit;
         }
 
-        $number_player = $number;
+        return $number;
+    }
+
+    public function run()
+    {
+        $number_player = $this->calculate_random_number();
         $cont = 1;
 
         do 
