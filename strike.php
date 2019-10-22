@@ -34,25 +34,7 @@ class Strike
 
         do 
         {
-            $digits_of_number = [];
-
-            for ($i = 0; $i < self::NUMBER_OF_DIGITS; $i++) 
-            { 
-                do 
-                {
-                    $new_digit = rand(0, 9);
-                } while (in_array($new_digit, $digits_of_number));
-
-                $digits_of_number[] = $new_digit;
-            }
-
-            $number = '';
-            foreach ($digits_of_number as $key => $digit)
-            {
-                $number = $number . $digit;
-            }
-
-            $select_number_random_to_play = $number;
+            $select_number_random_to_play = $this->calculate_random_number();
 
             $select_number_random_to_play_splitted = str_split($select_number_random_to_play);
             $number_player_splitted = str_split($number_player);
